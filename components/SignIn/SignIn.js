@@ -10,11 +10,11 @@ export function SignIn(){
                     <p className="text-gray-600">and access them from any device.</p>
                 </div>
 
-                <div>
-                    <button>
-                        
+                <div className="mt-4">
+                    <button className="h-10 w-full border-2 rounded-lg">
+                        <p className="text-black">Sign in</p>
                     </button>
-                    <p className="text-gray-600 text-xs">By continuing you agree to our <span className="underline">Privacy Policy</span> and <span className="underline">Terms of Use</span></p>
+                    <p className="text-gray-600 text-xs mt-2">By continuing you agree to our <span className="underline">Privacy Policy</span> and <span className="underline">Terms of Use</span></p>
                 </div>
             </div>
         </>
