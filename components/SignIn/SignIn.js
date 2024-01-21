@@ -11,7 +11,7 @@ export function SignIn(){
                 </div>
 
                 <div className="mt-4">
-                    <button className="h-10 w-full border-2 rounded-lg hover:bg-slate-50">
+                    <button className="h-10 w-full border-2 rounded-lg hover:bg-slate-100">
                         <p className="text-black">Sign in</p>
                     </button>
                     <p className="text-gray-600 text-xs mt-2">By continuing you agree to our <span className="underline">Privacy Policy</span> and <span className="underline">Terms of Use</span></p>
