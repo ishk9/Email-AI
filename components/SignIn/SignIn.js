@@ -17,11 +17,11 @@ export function SignIn(){
                     </button>
                     <p className="text-gray-600 text-xs mt-2">By continuing you agree to our 
                         <Link target="_blank" href="/policy">
-                            <span className="underline">Privacy Policy</span> 
+                            <span className="underline mx-1">Privacy Policy</span> 
                         </Link>
                         and
                         <Link target="_blank" href="/terms">
-                            <span className="underline">Terms of Use</span>
+                            <span className="underline mx-1">Terms of Use</span>
                         </Link>
                     </p>    
                 </div>
