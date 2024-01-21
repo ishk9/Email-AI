@@ -1,4 +1,5 @@
 import React from "react";
+import Link from 'next/link';
 
 export function SignIn(){
     return (
@@ -14,7 +15,15 @@ export function SignIn(){
                     <button className="h-10 w-full border-2 rounded-lg hover:bg-slate-100">
                         <p className="text-black">Sign in</p>
                     </button>
-                    <p className="text-gray-600 text-xs mt-2">By continuing you agree to our <span className="underline">Privacy Policy</span> and <span className="underline">Terms of Use</span></p>
+                    <p className="text-gray-600 text-xs mt-2">By continuing you agree to our 
+                        <Link target="_blank" href="/policy">
+                            <span className="underline">Privacy Policy</span> 
+                        </Link>
+                        and
+                        <Link target="_blank" href="/terms">
+                            <span className="underline">Terms of Use</span>
+                        </Link>
+                    </p>    
                 </div>
             </div>
         </>
