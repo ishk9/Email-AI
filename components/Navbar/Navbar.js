@@ -1,10 +1,10 @@
 import React from "react";
 import { HiOutlineMail } from "react-icons/hi";
 import { PlayStoreButton } from "./PlayStoreButton";
-import { UserButton } from "./UserButton";
+import UserButton from "./UserButton";
 
 
-export function Navbar(){
+export default function Navbar(){
     return(
         <>
             <navbar className="flex flex-row justify-around items-center h-16 p-4 w-full bg-white">
