@@ -1,7 +1,7 @@
-'use client';
+"use client";
 import React from "react";
 import { ContentInputField } from "@/components/ContentInputField/ContentInputField";
-import { Navbar } from "@/components/Navbar/Navbar";
+import Navbar from "@/components/Navbar/Navbar";
 import { SignIn } from "@/components/SignIn/SignIn";
 import { FiClipboard } from "react-icons/fi";
 import { MdEdit } from "react-icons/md";
@@ -76,26 +76,7 @@ export default function Home() {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
+                
               </p>
             </div>
           </div>
