@@ -27,14 +27,14 @@ const UserButton = () => (
 
             <button className="flex mb-2 justify-start w-full items-center hover:bg-slate-100 p-1 rounded-md">
             <RiFilePaper2Line color="black"/>
-              <Link href="/terms">
+              <Link target="_blank" href="/terms">
                 <p className="text-black text-sm ml-2">Terms of Use</p>
               </Link>
             </button>
 
             <button className="flex mb-2 justify-start w-full items-center hover:bg-slate-100 p-1 rounded-md">
               <BiLockAlt color="black"/>
-              <Link href="/policy">
+              <Link target="_blank" href="/policy">
                 <p className="text-black text-sm ml-2">Privacy Policy</p>
               </Link>
             </button>
