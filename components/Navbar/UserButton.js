@@ -4,7 +4,7 @@ import * as Popover from '@radix-ui/react-popover';
 import { BiLockAlt } from "react-icons/bi";
 import { RiFilePaper2Line } from "react-icons/ri";
 import { GoSignIn } from "react-icons/go";
-
+import Link from "next/link";
 
 const UserButton = () => (
   <Popover.Root>
@@ -27,12 +27,16 @@ const UserButton = () => (
 
             <button className="flex mb-2 justify-start w-full items-center hover:bg-slate-100 p-1 rounded-md">
             <RiFilePaper2Line color="black"/>
-              <p className="text-black text-sm ml-2">Terms of Use</p>
+              <Link href="/terms">
+                <p className="text-black text-sm ml-2">Terms of Use</p>
+              </Link>
             </button>
 
             <button className="flex mb-2 justify-start w-full items-center hover:bg-slate-100 p-1 rounded-md">
               <BiLockAlt color="black"/>
-              <p className="text-black text-sm ml-2">Privacy Policy</p>
+              <Link href="/policy">
+                <p className="text-black text-sm ml-2">Privacy Policy</p>
+              </Link>
             </button>
             <hr className="w-full bg-black"/>
             <button className="flex mt-2 justify-start w-full items-center hover:bg-slate-100 p-1 rounded-md">
