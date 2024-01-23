@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { ContentInputField } from "@/components/ContentInputField/ContentInputField";
 import Navbar from "@/components/Navbar/Navbar";
 import { SignIn } from "@/components/SignIn/SignIn";
@@ -12,7 +12,7 @@ import useStore from "./store";
 
 export default function Home() {
   const show = useStore((state) => state.show)
-
+  const data = useStore((state) => state.data)
   return (
     <main className="flex flex-col w-screen h-screen bg-white overflow-hidden">
         <Navbar />
@@ -35,7 +35,7 @@ export default function Home() {
             </div>
           )}
 
-          <div className="flex  flex-col justify-top items-center mt-10">
+          <div className="flex w-screen flex-col justify-top items-center mt-10">
             <div className="flex flex-row w-3/4 mb-2 items-end justify-end">
               <button className="transition-transform transform hover:scale-125">
                 <FiClipboard color="black"/>
@@ -48,39 +48,16 @@ export default function Home() {
               </button>
             </div>
             <div 
-              class="container h-1/2 w-3/4  p-6
+              className="h-screen w-3/4 p-6 
               bg-white border border-gray-300 rounded-md shadow-md
               flex flex-col items-end"
               >
 
-              <p class="text-black overflow-y-scroll h-full">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (your content)
-                
+              <p className="text-black overflow-y-scroll h-1/2 w-3/4 p-6">
+                {data}
               </p>
             </div>
           </div>
-
         </div>
     </main>
   );
