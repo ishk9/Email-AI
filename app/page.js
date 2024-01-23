@@ -6,7 +6,7 @@ import { SignIn } from "@/components/SignIn/SignIn";
 import { FiClipboard } from "react-icons/fi";
 import { MdEdit } from "react-icons/md";
 import { AiOutlineRedo } from "react-icons/ai";
-
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 import useStore from "./store";
 
@@ -37,9 +37,18 @@ export default function Home() {
 
           <div className="flex w-screen flex-col justify-top items-center mt-10">
             <div className="flex flex-row w-3/4 mb-2 items-end justify-end">
-              <button className="transition-transform transform hover:scale-125">
+              <CopyToClipboard 
+                className="transition-transform transform hover:scale-125"
+                text={data}
+              >
                 <FiClipboard color="black"/>
-              </button>
+              </CopyToClipboard>
+              {/* <button 
+                className="transition-transform transform hover:scale-125"
+                onClick={() =>  navigator.clipboard.writeText('Copy this text to clipboard')}
+              >
+                <FiClipboard color="black"/>
+              </button> */}
               <button className="transition-transform transform hover:scale-125">
                 <MdEdit color="black"/>
               </button>
