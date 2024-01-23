@@ -1,6 +1,8 @@
 import { create } from 'zustand'
 const useStore = create((set) => ({
-  show: true,
+  show: false,
+  data: "Hello",
+  setData: (data) => set({ data }),
   setShow: () => set((state) => ({ show: !state.show}))
 }));
 
