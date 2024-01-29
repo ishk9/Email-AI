@@ -7,7 +7,7 @@ export function PlayStoreButton(){
             <button 
                 className="h-10 w-30 p-2 flex flex-row 
                 items-center justify-center border-2 rounded-lg
-                bg-black"
+                bg-black border-transparent"
             >
                 <IoLogoGooglePlaystore color="white"/>
                 <div className="flex flex-col ml-1">
