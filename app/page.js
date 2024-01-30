@@ -8,6 +8,8 @@ import { MdEdit } from "react-icons/md";
 import { AiOutlineRedo } from "react-icons/ai";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 // import { useAuth0 } from "@auth0/auth0-react";
+import { Typewriter } from 'react-simple-typewriter'
+
 
 import useStore from "./store";
 
@@ -19,11 +21,20 @@ export default function Home() {
     <main className="flex flex-row w-screen h-screen bg-white overflow-hidden justify-center items-center">
       <div className="flex flex-col w-1/2 h-screen bg-[rgb(231,194,88)] overflow-hidden">
         <Navbar />
+        <Typewriter
+          words={['Eat Sleep Code Repeat! flex flex-col items-center w-1/2 h-screen overflow-hidden bg-white flex flex-col items-center w-1/2 h-screen overflow-hidden bg-white flex flex-col items-center w-1/2 h-screen overflow-hidden bg-white flex flex-col items-center w-1/2 h-screen overflow-hidden bg-white flex flex-col items-center w-1/2 h-screen overflow-hidden bg-white flex flex-col items-center w-1/2 h-screen overflow-hidden bg-white flex flex-col items-center w-1/2 h-screen overflow-hidden bg-white flex flex-col items-center w-1/2 h-screen overflow-hidden bg-white']}
+          loop={0}
+          cursor
+          typeSpeed={20}
+          deleteSpeed={10}
+          delaySpeed={1000}
+          className='text-black font-bold text-5xl'
+        />
       </div>
         
       <div className="flex flex-col items-center w-1/2 h-screen overflow-hidden bg-white">
           <div className="h-screen w-screen flex flex-col items-center mt-20">
-            <h1 className="text-black font-semibold text-4xl">
+            <h1 className="text-black font-semibold text-4xl cursor-default">
               AI Mails
             </h1>
             <p className="text-black mt-1">
