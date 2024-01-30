@@ -7,7 +7,9 @@ import UserButton from "./UserButton";
 export default function Navbar(){
     return(
         <>
-            <navbar className="flex flex-row justify-around items-center h-16 p-4 w-full bg-transparent">
+            <navbar 
+                className="flex flex-row justify-around items-center 
+                h-16 p-4 w-full bg-transparent cursor-default">
                 <div className="flex justify-center items-center">
                     <HiOutlineMail color="black" size={20}/>
                     <h1 className="ml-1 text-black text-lg font-semibold">Email.Ai</h1>
