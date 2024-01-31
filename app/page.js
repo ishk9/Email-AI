@@ -9,7 +9,7 @@ import { AiOutlineRedo } from "react-icons/ai";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 // import { useAuth0 } from "@auth0/auth0-react";
 import { Typewriter } from 'react-simple-typewriter'
-
+import { motion } from "framer-motion"
 
 import useStore from "./store";
 
@@ -21,15 +21,28 @@ export default function Home() {
     <main className="flex flex-row w-screen h-screen bg-white overflow-hidden justify-center items-center">
       <div className="flex flex-col w-1/2 h-screen bg-[rgb(231,194,88)] overflow-hidden">
         <Navbar />
-        <Typewriter
-          words={['Eat Sleep Code Repeat! flex flex-col items-center w-1/2 h-screen overflow-hidden bg-white flex flex-col items-center w-1/2 h-screen overflow-hidden bg-white flex flex-col items-center w-1/2 h-screen overflow-hidden bg-white flex flex-col items-center w-1/2 h-screen overflow-hidden bg-white flex flex-col items-center w-1/2 h-screen overflow-hidden bg-white flex flex-col items-center w-1/2 h-screen overflow-hidden bg-white flex flex-col items-center w-1/2 h-screen overflow-hidden bg-white flex flex-col items-center w-1/2 h-screen overflow-hidden bg-white']}
-          loop={0}
-          cursor
-          typeSpeed={20}
-          deleteSpeed={10}
-          delaySpeed={1000}
-          className='text-black font-bold text-5xl'
-        />
+
+        <div className="h-3/4 p-4 px-10 mt-6 flex flex-col">
+          <Typewriter
+            words={['Subject: Request for Letter of Recommendation']}
+            loop={1}
+            cursor
+            typeSpeed={20}
+            deleteSpeed={10}
+            delaySpeed={1000}
+          />
+           
+        </div>
+
+        <motion.div 
+          animate={{x:0, y:-60,}}
+          className='flex justify-center items-center'>
+          <button className="h-10 w-2/5 bg-black p-2 rounded-lg flex justify-center items-center">
+            <h1 className="text-white text-sm">Try Premimum</h1>
+          </button>
+        </motion.div>
+
+
       </div>
         
       <div className="flex flex-col items-center w-1/2 h-screen overflow-hidden bg-white">
