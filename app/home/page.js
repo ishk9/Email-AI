@@ -10,6 +10,7 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 export default function HomePage() {
   const [content, setContent] = useState('');
   const [num, setNum] = useState(100);
+  const [generated, setGenerated] = useState(true);
 
     const setData = useStore((state) => state.setData)
     async function sendData(){
@@ -26,7 +27,7 @@ export default function HomePage() {
     }
   return (
     <main className="flex flex-row w-screen h-screen bg-white overflow-hidden justify-center items-center">
-      <div className="flex flex-col w-1/2 h-screen bg-[rgb(231,194,88)] overflow-hidden">
+      <div className={`flex flex-col ${generated ? 'w-full': 'w-1/2'} h-screen bg-[rgb(231,194,88)] overflow-hidden`}>
         <Navbar />
 
         <div className="flex flex-col justify-between h-full">
@@ -59,7 +60,10 @@ export default function HomePage() {
           <motion.div 
             animate={{x:0, y:-60,}}
             className='flex justify-center items-center'>
-            <button className="h-10 w-2/5 bg-black p-2 rounded-lg flex justify-center items-center hover:bg-[#1E2B3A]">
+            <button 
+              className="h-10 w-2/5 bg-black p-2 rounded-lg flex justify-center items-center hover:bg-[#1E2B3A]"
+              onClick={() => setGenerated(!generated)}
+            >
               <h1 className="text-white text-sm">Generate</h1>
               <FaLongArrowAltRight className="ml-2" color="white" />
             </button>
@@ -67,8 +71,9 @@ export default function HomePage() {
         </div>
 
       </div>
-            
-      <div className="flex flex-col items-center w-1/2 h-screen overflow-hidden bg-white">
+      
+      {/* OUTPUT */}
+      <div className={`flex flex-col items-center ${generated ? 'w-0' : 'w-1/2'} h-screen overflow-hidden bg-white`}>
           
           
       </div>
