@@ -45,10 +45,12 @@ export default function HomePage() {
               <div className="flex justify-center items-center w-full mt-8">
                 {/* Input field */}
                 <div className="flex flex-row justify-center items-center w-2/4">
-                  <input type="text" name="emailcontent" 
-                      className="text-white bg-black w-3/4 p-2 rounded-xl rounded-r-none" 
-                      placeholder="Write a mail to the principal..."
-                      onChange={(e) => setContent(e.target.value)}
+                  <textarea
+                    value={content}
+                    placeholder="Write a mail to the principal..."
+                    onChange={(e) => setContent(e.target.value)}
+                    rows={4}
+                    className="w-full text-white p-2 rounded-md bg-black border-gray-300 shadow-sm focus:border-black focus:ring-black my-5"
                   />
                 </div>
               </div>
