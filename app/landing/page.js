@@ -3,7 +3,6 @@ import Footer from '@/components/Landingpage/Footer'
 import Button from '@/components/Landingpage/Button'
 import React, { useState } from 'react';
 import {motion} from 'framer-motion'
-
 import '../../components/Landingpage/styles.css';
 
 function LandingPage() {
@@ -19,11 +18,11 @@ function LandingPage() {
               onAnimationComplete={() => showButtonAnimation(true)}
             >
         
-              <h1 className="text-2xl font-extrabold text-[#1E2B3A] font-inter mb-6">MAARG</h1>
+              <h1 className="text-2xl font-extrabold text-[#1E2B3A] font-inter mb-6">EMAIL.AI</h1>
               <p className="text-[16vw] md:text-[110px] font-extrabold text-[#1E2B3A] leading-[0.9] tracking-[-2px] z-[100] font-inter">
-                  Find your Way
+                  Craft Professional 
                   <br/>
-                  to the <span className="text-[#407BBF] font-inter">Destination.</span>
+                  Emails <span className="text-[#407BBF] font-inter">Effortlessly.</span>
               </p>
             {/* Paragraph tag */}
             <div className="flex flex-row w-2/5 justify-between items-center mt-6">
