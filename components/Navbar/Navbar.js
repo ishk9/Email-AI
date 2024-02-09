@@ -1,8 +1,6 @@
 import React from "react";
 import { HiOutlineMail } from "react-icons/hi";
-import { PlayStoreButton } from "./PlayStoreButton";
-import UserButton from "./UserButton";
-
+import NavbarButton from "./NavbarButton";
 
 export default function Navbar(){
     return(
@@ -14,11 +12,8 @@ export default function Navbar(){
                     <HiOutlineMail color="black" size={20}/>
                     <h1 className="ml-1 text-black text-lg font-semibold">Email.Ai</h1>
                 </div>
+                <NavbarButton />
 
-                <div className="flex justify-center items-center">
-                    <PlayStoreButton />
-                    <UserButton />
-                </div>
             </navbar>
         </>
     );
