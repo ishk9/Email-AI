@@ -1,20 +1,21 @@
 import { config } from "dotenv";
 import OpenAI from "openai";
 import express from "express";
-import bodyParser from "body-parser"; // Import body-parser
+import bodyParser from "body-parser";
 import cors from "cors";
 
 config();
 
 const app = express();
 app.use(cors());
-app.use(bodyParser.json()); // Use body-parser middleware
+app.use(bodyParser.json());
 
 app.post("/sendingcontent", async (req, res) => {
   try {
     console.log(req.body);
     const { content } = req.body;
-    const response = await fetchDataFromAPI(content);
+    const prompt = content + "Also the mail should be in 4 sections:- Subject: , Header: , Body:, Closing: .Also after completion add Done";
+    const response = await fetchDataFromAPI(prompt);
     console.log(response);
     res.json({ success: true, message: response});
   } catch (error) {
