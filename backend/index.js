@@ -1,14 +1,21 @@
 import { config } from "dotenv";
 import OpenAI from "openai";
 import express from "express";
+import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cors from "cors";
+
+import Mail from "./model/mailSchema.js";
 
 config();
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+
+const PORT =  process.env.PORT || 8000;
+const DB = `mongodb+srv://ishaankhullar06:${process.env.MONGODB_KEY}@cluster0.klqpicy.mongodb.net/?retryWrites=true&w=majority`;
+
 
 app.post("/sendingcontent", async (req, res) => {
   try {
@@ -17,7 +24,14 @@ app.post("/sendingcontent", async (req, res) => {
     const prompt = content + "Also the mail should be in 4 sections:- Subject: , Header: , Body:, Closing: .Also after completion add Done";
     const response = await fetchDataFromAPI(prompt);
     console.log(response);
+    
+    const mail = new Mail({mail: content});
+    mail.save();
+    const count = await Mail.countDocuments();
+    console.log(count);
+
     res.json({ success: true, message: response});
+    
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: "Internal server error." });
@@ -37,7 +51,12 @@ async function fetchDataFromAPI(content) {
   return completion.choices[0].message.content;
 }
 
-// main();
-app.listen(8000, () => {
+mongoose.connect(DB).then(() => {
+  console.log("Connection successful!");
+}).catch(() => {
+  console.log("Error connecting to database");
+});
+
+app.listen(PORT, () => {
   console.log("Server is running on port 8000");
 });
