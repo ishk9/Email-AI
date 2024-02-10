@@ -3,31 +3,54 @@ import React, { useState } from "react";
 import Navbar from "@/components/Navbar/Navbar";
 import axios from 'axios';
 import { motion } from "framer-motion"
-import useStore from "../store";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
 
 export default function HomePage() {
   const [content, setContent] = useState('');
   const [num, setNum] = useState(100);
-  const [generated, setGenerated] = useState(true);
+  const [generated, setGenerated] = useState(false);
 
-    const setData = useStore((state) => state.setData)
-    async function sendData(){
-        console.log(content);
-        axios.post('http://localhost:8000/sendingcontent', {
-            content
-        }).then((res) => {
-            console.log(res);
-            const messageFromResponse = res;
-            setData(messageFromResponse.data.message);
-        }).catch((err) => {
-            console.log(err);
-        }); 
-    }
+  const [subject, setSubject] = useState('');
+  const [header, setHeader] = useState('');
+  const [body, setBody] = useState('');
+  const [closing, setClosing] = useState('');
+
+  function splitData(apiResponse){
+      // Split the response into sections based on the provided delimiters
+      const [splitSubject, restHeader] = apiResponse.split('Header:');
+      const [splitHeader, restBody] = restHeader.split('Body:');
+      const [splitBody, restClosing] = restBody.split('Closing:');
+      const [splitClosing, rest] = restClosing.split('Done');
+  
+      // Trim each section to remove leading and trailing whitespace
+      const subject = splitSubject.trim();
+      const header = splitHeader.trim();
+      const body = splitBody.trim();
+      const closing = splitClosing.trim();
+  
+      // Now you can handle each section as needed, e.g., set them to state variables
+      setSubject(subject);
+      setHeader(header);
+      setBody(body);
+      setClosing(closing);  
+  }
+
+  async function sendData(){
+      console.log(content);
+      axios.post('http://localhost:8000/sendingcontent', {
+          content
+      }).then((res) => {
+          console.log(res);
+          const messageFromResponse = res;
+          splitData(messageFromResponse.data.message);
+      }).catch((err) => {
+          console.log(err);
+      }); 
+  }
   return (
     <main className="flex flex-row w-screen h-screen bg-white overflow-hidden justify-center items-center">
-      <div className={`flex flex-col ${generated ? 'w-full': 'w-1/2'} h-screen bg-[rgb(231,194,88)] overflow-hidden`}>
+      <div className={`flex flex-col ${generated ? 'w-1/2': 'w-full'} h-screen bg-[rgb(231,194,88)] overflow-hidden`}>
         <Navbar />
 
         <div className="flex flex-col justify-between h-full">
@@ -62,7 +85,12 @@ export default function HomePage() {
             className='flex justify-center items-center'>
             <button 
               className="h-10 w-2/5 bg-black p-2 rounded-lg flex justify-center items-center hover:bg-[#1E2B3A]"
-              onClick={() => setGenerated(!generated)}
+              onClick={() => {
+                // sendData();
+                setGenerated(!generated);
+            
+
+              }}
             >
               <h1 className="text-white text-sm">Generate</h1>
               <FaLongArrowAltRight className="ml-2" color="white" />
@@ -73,8 +101,19 @@ export default function HomePage() {
       </div>
       
       {/* OUTPUT */}
-      <div className={`flex flex-col items-center ${generated ? 'w-0' : 'w-1/2'} h-screen overflow-hidden bg-white`}>
-          
+      <div className={`flex flex-col items-start ${generated ? 'w-1/2' : 'w-0'} h-screen overflow-hidden bg-white justify-evenly ${generated ? 'p-4' : 'p-0'}`}>
+          <p className="p-4 border-2 w-full rounded-lg text-[12px] font-[500]">
+            {subject}
+          </p>
+          <p className="p-4 border-2 w-full rounded-lg text-[12px] font-[500]">
+            {header}
+          </p>
+          <p className="p-4 border-2 w-full rounded-lg text-[12px] font-[500]">
+            {body}
+          </p>
+          <p className="p-4 border-2 w-full rounded-lg text-[12px] font-[500]">
+            {closing}
+          </p>
           
       </div>
     </main>
