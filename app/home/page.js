@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar/Navbar";
 import axios from 'axios';
 import { motion } from "framer-motion"
@@ -10,11 +10,31 @@ export default function HomePage() {
   const [content, setContent] = useState('');
   const [num, setNum] = useState(100);
   const [generated, setGenerated] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const [subject, setSubject] = useState('');
   const [header, setHeader] = useState('');
   const [body, setBody] = useState('');
   const [closing, setClosing] = useState('');
+
+  useEffect(() => {
+    // Fetch updated num value every minute
+    const interval = setInterval(() => {
+      axios.get('http://localhost:8000/getnum')
+        .then((res) => {
+          const count = res.data.count;
+          console.log(count);
+          setNum(count);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }, 60000); // 60000 milliseconds = 1 minute
+
+    // Cleanup interval to avoid memory leaks
+    return () => clearInterval(interval);
+  }, []); // Run only once on component mount
+
 
   function splitData(apiResponse){
       // Split the response into sections based on the provided delimiters
@@ -42,8 +62,12 @@ export default function HomePage() {
           content
       }).then((res) => {
           console.log(res);
-          const messageFromResponse = res;
-          splitData(messageFromResponse.data.message);
+          splitData(res.data.message);
+          const success = res.data.success;
+          console.log(success);
+          if(success) {
+            setIsDisabled(false);
+          }
       }).catch((err) => {
           console.log(err);
       }); 
@@ -84,12 +108,12 @@ export default function HomePage() {
             animate={{x:0, y:-60,}}
             className='flex justify-center items-center'>
             <button 
-              className="h-10 w-2/5 bg-black p-2 rounded-lg flex justify-center items-center hover:bg-[#1E2B3A]"
+              className={`h-10 w-2/5 bg-black p-2 rounded-lg flex justify-center items-center hover:bg-[#1E2B3A] ${isDisabled ? "opacity-50 cursor-not-allowed" : ""}`}
+              {...isDisabled ? 'disabled' : 'enabled'}
               onClick={() => {
-                // sendData();
-                setGenerated(!generated);
-            
-
+                setIsDisabled(true);
+                sendData();
+                setGenerated(true);
               }}
             >
               <h1 className="text-white text-sm">Generate</h1>
