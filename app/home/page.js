@@ -19,18 +19,18 @@ export default function HomePage() {
 
   useEffect(() => {
     // Fetch updated num value every minute
-    const interval = setInterval(() => {
-      axios.get('http://localhost:8000/getnum')
-        .then((res) => {
-          const count = res.data.count;
-          console.log(count);
-          setNum(count);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }, 60000); // 60000 milliseconds = 1 minute
-
+    console.log("ENTered");
+    const fetchValue = async() => {
+      try {
+        const resp = await axios.post('http://localhost:8000/getnum');
+        const count = resp.data.message;
+        setNum(count);
+      } catch (error) {
+        console.error('Error fetching num value:', error);
+      }
+    }
+    fetchValue();
+    const interval = setInterval(fetchValue, 30000);
     // Cleanup interval to avoid memory leaks
     return () => clearInterval(interval);
   }, []); // Run only once on component mount
