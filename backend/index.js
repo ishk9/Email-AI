@@ -16,6 +16,16 @@ app.use(bodyParser.json());
 const PORT =  process.env.PORT || 8000;
 const DB = `mongodb+srv://ishaankhullar06:${process.env.MONGODB_KEY}@cluster0.klqpicy.mongodb.net/?retryWrites=true&w=majority`;
 
+app.post("/getnum", async(req, res) => {
+  try{
+    const count = await Mail.countDocuments();
+    console.log(count);
+    res.json({success: true, message:count});
+  }
+  catch (err) {
+    console.log(err);
+  }
+});
 
 app.post("/sendingcontent", async (req, res) => {
   try {
@@ -27,11 +37,9 @@ app.post("/sendingcontent", async (req, res) => {
     
     const mail = new Mail({mail: content});
     mail.save();
-    const count = await Mail.countDocuments();
-    console.log(count);
-
-    res.json({ success: true, message: response});
     
+    res.json({ success: true, message: response});
+
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: "Internal server error." });
