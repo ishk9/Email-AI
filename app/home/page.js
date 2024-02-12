@@ -22,7 +22,7 @@ export default function HomePage() {
     console.log("ENTered");
     const fetchValue = async() => {
       try {
-        const resp = await axios.post('http://localhost:8000/getnum');
+        const resp = await axios.post(`${process.env.HOST_IP}/getnum`);
         const count = resp.data.message;
         setNum(count);
       } catch (error) {
@@ -30,7 +30,7 @@ export default function HomePage() {
       }
     }
     fetchValue();
-    const interval = setInterval(fetchValue, 30000);
+    const interval = setInterval(fetchValue, 100000);
     // Cleanup interval to avoid memory leaks
     return () => clearInterval(interval);
   }, []); // Run only once on component mount
@@ -58,7 +58,7 @@ export default function HomePage() {
 
   async function sendData(){
       console.log(content);
-      axios.post('http://localhost:8000/sendingcontent', {
+      axios.post(`${process.env.HOST_IP}/sendingcontent`, {
           content
       }).then((res) => {
           console.log(res);
